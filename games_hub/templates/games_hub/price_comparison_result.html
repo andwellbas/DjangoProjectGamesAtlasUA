@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Результати пошуку{% endblock %}
+{%  block css_files %}
+  <link rel="stylesheet" href="{% static 'games_hub/price_comparison_result.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="single">
+<h1 id="game-name">{{ game_name }}</h1>
+<ul>
+  <li>
+      <a href="{{ steam_link }}"><img src="{% static 'games_hub/images/steam.png' %}"/></a>
+      <h3>{{ steam_price }}</h3>
+  </li>
+  <li>
+      <a href="https://www.gamersgate.com/{{ gamers_gate_link }}"><img src="{% static 'games_hub/images/gate.png' %}"/></a>
+      <h3>{{ gamers_gate_price }}</h3>
+  </li>
+  <li>
+    <a href="https://gamesplanet.com{{ games_planet_link }}"><img src="{% static 'games_hub/images/gamesplanet.png' %}"/></a>
+    <h3>{{ games_planet_price }}</h3>
+  </li>
+  <li>
+    <a href="https://www.yuplay.com/{{ yu_play_link }}"><img src="{% static 'games_hub/images/yuplay.png' %}"/></a>
+    <h3>{{ yu_play_price }}</h3>
+  </li>
+  <li>
+    <a href="{{ win_game_link }}"><img src="{% static 'games_hub/images/wingame.png' %}"/></a>
+    <h3>{{ win_game_price }}</h3>
+  </li>
+  <li>
+    <a href="{{ alkey_link }}"><img src="{% static 'games_hub/images/allkey.jpg' %}"/></a>
+    <h3>{{ alkey_price }}</h3>
+  </li>
+  <li>
+    <a href="https://www.noctre.com{{ noctre_link }}"><img src="{% static 'games_hub/images/noctre.png' %}"/></a>
+    <h3>{{ noctre_price }}</h3>
+  </li>
+</ul>
+<pre>
+Надані ціни іноді можуть відрізнятись з реальними через те, що пошук цін здійснюється за допомогою назви гри, яку ви вводите.
+Тому можливо, що ціна, яка відображається, відноситься до DLC цієї гри або до гри з подібною назвою.
+</pre>
+</div>
+
+{% endblock %}

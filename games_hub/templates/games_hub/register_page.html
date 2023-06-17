@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Реєстрація{% endblock %}
+{% block css_files %}<link rel="stylesheet" href="{% static 'games_hub/register_page.css' %}">{% endblock %}
+{% block scripts %}<script src="https://www.google.com/recaptcha/api.js" async defer></script>{% endblock %}
+
+{% block content %}
+<div id="single">
+  <form method="post">
+    <h1 id="title">Реєстрація</h1>
+    {% csrf_token %}
+    <div id="errors">
+        {{ form.username.errors }}
+        {{ form.email.errors }}
+        {{ form.password2.errors }}
+        {{ form.recaptcha.errors }}
+    </div>
+        <ul id="register-form">
+            <li>{{ form.username }}</li>
+            <li>{{ form.email }}</li>
+            <li>{{ form.password1 }}</li>
+            <li>{{ form.password2 }}</li>
+            <li id="captcha">{{ form.recaptcha }}</li>
+        </ul>
+    <button id="submit-button" type="submit">Завершити реєстрацію</button>
+  </form>
+</div>
+{% endblock %}

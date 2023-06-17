@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}GamesAtlasUA{% endblock %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'games_hub/main_page.css' %}">
+<link rel="stylesheet" href="{% static 'games_hub/pagination.css' %}">
+{% endblock %}
+
+{% block content %}
+<ul>
+    {% for n in news %}
+        <li>
+            <a href="{% url 'detail-news-page' n.slug %}">
+                <div>
+                    <h3>{{ n.name }}</h3>
+                    <h6>{{ n.date }}</h6>
+                    <img src="{{ n.preview_image.url }}">
+                    <p>{{ n.excerpt }}</p>
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<div class="pagination">
+    {% if news.has_previous %}
+        <a href="?page=1">&laquo;&laquo;</a>
+        <a href="?page={{ news.previous_page_number }}">&laquo;</a>
+    {% endif %}
+
+    {% if news.paginator.num_pages > 1 %}
+        {% if news.number > 4 %}
+            <a href="?page=1">1</a>
+            <span>...</span>
+        {% endif %}
+
+        {% for i in news.paginator.page_range %}
+            {% if i >= news.number|add:"-4" and i <= news.number|add:"4" %}
+                {% if i == news.number %}
+                    <span class="current-page">{{ i }}</span>
+                {% else %}
+                    <a href="?page={{ i }}">{{ i }}</a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {% if news.number < news.paginator.num_pages|add:"-4" %}
+            <span>...</span>
+            <a href="?page={{ news.paginator.num_pages }}">{{ news.paginator.num_pages }}</a>
+        {% endif %}
+    {% endif %}
+
+    {% if news.has_next %}
+        <a href="?page={{ news.next_page_number }}">&raquo;</a>
+        <a href="?page={{ news.paginator.num_pages }}">&raquo;&raquo;</a>
+    {% endif %}
+</div>
+{% endblock %}

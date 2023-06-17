@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ game.name }}{% endblock %}
+{% block css_files %}<link rel="stylesheet" href="{% static 'games_hub/detail_future_releases.css' %}">{% endblock %}
+
+{% block content %}
+  <h1 id="game-name">{{ game.name }}</h1>
+  <div id="single">
+    <div class="game-information">
+      <img src="{{ game.image.url }}">
+      <div class="game-info">
+        {% if game.release_date %}
+          <h4>Дата релізу: {{ game.release_date }}</h4>
+        {% else %}
+          <h4>Дата релізу: Незабаром</h4>
+        {% endif %}
+        <h4>Розробник: {{ game.developer }}</h4>
+        <h4>Видавець: {{ game.publisher }}</h4>
+        <div class="vote-section">
+          <h4 class="vote-count">Кількість користувачів, що чекають гру: {{ game.voters.count }}</h4>
+          {% if request.user.is_authenticated %}
+            {% if request.user in game.voters.all %}
+              <h6>Ви очікуєте цю гру</h6>
+            {% else %}
+              <form action="{% url 'vote_for_game' game.slug %}" method="post">
+                {% csrf_token %}
+                <button class="vote-button" type="submit">Чекаю цю гру</button>
+              </form>
+            {% endif %}
+          {% else %}
+            <h5>Ви повинні <a href="{% url 'login' %}" class="login-link">авторизуватись</a> щоб проголосувати</h5>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="desc-trailer">
+      <pre>{{ game.description_part1|safe }}</pre>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ game.trailer }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <pre>{{ game.description_part2|safe }}</pre>
+    </div>
+  </div>
+{% endblock %}

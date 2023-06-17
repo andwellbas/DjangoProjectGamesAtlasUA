@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ game.name }}{% endblock %}
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'games_hub/detail_top_games_page.css' %}">
+{% endblock %}
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'games_hub/detail_top_games_page.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 id="game-name">{{ game.name }}</h1>
+    <div id="single">
+    <div class="game-information">
+        <img src="{{ game.image.url }}" alt="{{ game.name }}">
+        <div class="game-score">
+            <h4 class="info">Дата релізу: {{ game.release_date }}</h4>
+            <h4 class="info">Розробник: {{ game.developer }}</h4>
+            <h4 class="info">Видавець: {{ game.publisher }}</h4>
+            {% if average_rating %}
+              <h4 class="average-rating">Рейтинг гри: {{ average_rating|floatformat:1 }}</h4>
+            {% else %}
+              <p class="average-rating">Ще немає оцінок</p>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+                <form method="POST" class="user-rating-form" autocomplete="off">
+                    {% csrf_token %}
+                    <div class="rating-stars">
+                        {% for rating in "          " %}
+                            {% if forloop.counter <= 10 %}
+                                <span class="rating-star {% if current_rating and current_rating >= forloop.counter %}filled{% endif %}" data-rating="{{ forloop.counter }}"></span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" name="rating" id="id_rating" value="">
+                </form>
+            {% else %}
+                <h5>Ви повинні <a href="{% url 'login' %}" id="login-link">авторизуватись</a> щоб оцінити гру</h5>
+            {% endif %}
+            <h5>Всього оцінок {{ total_ratings }}</h5>
+        </div>
+    </div>
+    <div class="desc-trailer">
+        <pre>{{ game.description_part1|safe }}</pre>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ game.trailer }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <pre>{{ game.description_part2|safe }}</pre>
+    </div>
+</div>
+{% endblock %}

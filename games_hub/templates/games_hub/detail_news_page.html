@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ news.name }}{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'games_hub/detail_news_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 id="news_h1">{{ news.name }}</h1>
+<div id="single">
+    <div>
+        <img src="{{ news.detail_image.url }}">
+        <pre>{{ news.description|safe }}</pre>
+    </div>
+
+    <div class="comments-container">
+        <div class="add comment">
+            {% if user.is_authenticated %}
+                <div>
+                    <div class="col-sm-12">
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ comment_form.as_p }}
+                            <button type="submit" class="btn btn-primary">Залишити Коментар</button>
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    Ви повинні <a href="{% url 'login' %}" id="login-link">авторизуватись</a> щоб залишити коментарі
+                </div>
+            {% endif %}
+        </div>
+        <div class="comments">
+            {% if news.comments.count > 0 %}
+                {% for comment in comments %}
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <strong>{{ comment.user.username }}</strong><br>
+                            <small>{{ comment.created_date }}</small>
+                        </div>
+                        <div class="col-sm-10">
+                            <p>{{ comment.content }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

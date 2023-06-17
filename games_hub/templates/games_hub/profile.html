@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ваш профіль{% endblock %}
+{% block css_files %}<link rel="stylesheet" href="{% static 'games_hub/profile.css' %}">{% endblock %}
+
+{% block content %}
+<div id="main_div">
+<h1 id="title">ВАШ ПРОФІЛЬ</h1>
+<div id="single">
+  <div id="main_info">
+    <p>Ім'я користувача: {{ user.username }}</p>
+    <p>E-mail: {{ user.email }}</p>
+  </div>
+  <div id="user-wish-list">
+    <h3>Ігри, які ви очікуєте:</h3>
+    <ul>
+      {% for release in future_releases %}
+      <li><a class="game-link" href="{% url 'detail-future-releases' release.slug %}">{{ release.name }} - {% if release.release_date %}{{ release.release_date }}{% else %}Незабаром{% endif %}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div id="user-ratings">
+    <h3>Ваші оцінки:</h3>
+    <ul>
+      {% for rating in ratings %}
+        <li><a class="game-link" href="{% url 'detail-top-games' rating.slug %}">{{ rating.game }} - {{ rating.rating }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+</div>
+{% endblock %}

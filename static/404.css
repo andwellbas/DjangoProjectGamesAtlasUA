@@ -1,0 +1,27 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+div {
+  text-align: center;
+}
+
+h1 {
+  font-size: 28px;
+  color: #333;
+}
+
+p {
+  font-size: 18px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Топ найкращіх ігор{% endblock %}
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'games_hub/top_games_page.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1 id="page-info">ТОП НАЙКРАЩИХ ІГОР</h1>
+  <div class="table-container">
+    <table>
+      <tbody>
+        {% for game in games %}
+          <tr class="game-row">
+            <td class="game-image">
+              <a href="{% url 'detail-top-games' game.slug %}">
+                <img src="{{ game.image.url }}" alt="{{ game.name }}">
+              </a>
+            </td>
+            <td class="game-name">
+              <a href="{% url 'detail-top-games' game.slug %}"><h3>{{ game.name }}</h3></a>
+            </td>
+            <td class="game-rating"><h3>{{ game.avg_rating|default:"0"|floatformat:1 }}</h3></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+<pre id="pre-description">В цей топ потрапили лише найяскравіші та найкращі ігри, які варто спробувати.
+Відкрийте для себе захоплюючий світ геймінгу з нами!</pre>
+{% endblock %}

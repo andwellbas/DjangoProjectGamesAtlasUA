@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Future Releases{% endblock %}
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'games_hub/future_releases_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 id="page-info">МАЙБУТНІ РЕЛІЗИ</h1>
+<div class="table-container">
+  <table>
+    <tbody>
+      {% for game in games %}
+        <tr class="game-row">
+          <td class="game-image">
+            <a href="{% url 'detail-future-releases' game.slug %}">
+              <img src="{{ game.image.url }}" alt="{{ game.name }}">
+            </a>
+          </td>
+          <td class="game-details">
+            <a href="{% url 'detail-future-releases' game.slug %}">
+              <h3>{{ game.name }}</h3>
+            </a>
+            {% if game.release_date %}
+              <h5>{{ game.release_date }}</h5>
+            {% else %}
+              <h5>Незабаром</h5>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<pre id="pre-description">У цьому списку ви знайдете найочікуваніші ігри, які варто спробувати.
+Ми ретельно відібрали найцікавіші проекти,
+щоб ви могли відкрити для себе захоплюючий світ геймінгу разом з нами!</pre>
+{% endblock %}

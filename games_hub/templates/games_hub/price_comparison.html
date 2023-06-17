@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Порівняння цін{% endblock %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'games_hub/price_comparison.css' %}">
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'games_hub/price_comparison.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div id="single">
+  <h1>Порівняння цін</h1>
+  <form id="price-comparison-form" method="GET" action="{% url 'results' %}">
+    <input type="text" id="game_name" name="game_name" required placeholder="Введіть назву гри">
+    <button type="submit">Порівняти</button>
+  </form>
+  <pre>
+    Просто введіть назву гри в поле пошуку, і ми покажемо вам список магазинів, де ви можете придбати цю гру та її поточну ціну. Зауважте, що пошук цін відбувається в режимі реального часу, тому це може зайняти деякий час.
+
+    Зазвичай, час пошуку становить близько п'яти секунд, що дуже швидко і зручно. Однак, у рідкісних випадках, коли обробка великої кількості даних або інші фактори впливають на швидкість пошуку, це може зайняти трохи більше часу.
+
+    Ми розуміємо, що ваш час цінний, тому робимо все можливе, щоб забезпечити найшвидший і найефективніший пошук цін на ігри. Ми переконані, що наш сервіс допоможе вам знайти найбільш вигідну пропозицію для себе.
+  </pre>
+  <div class="custom-loader hidden"></div>
+</div>
+{% endblock %}

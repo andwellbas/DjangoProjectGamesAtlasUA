@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#single {
+    max-width: 800px;
+    margin: 0 auto;
+    border: solid #1b1c1f;
+    padding: 20px;
+}
+
+#game-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    text-shadow: 0 0 10px #2efeff;
+    text-align: center;
+}
+
+#game-information {
+    width: 60%;
+    display: inline-block;
+}
+
+.game-score {
+    width: 40%;
+    display: inline-block;
+}
+
+.desc-trailer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.desc-trailer iframe {
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #2efeff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #2efeff;
+}
+
+#login-link {
+    color: #fc0000;
+}
+
+#login-link:hover {
+    color: #2efeff;
+}
+
+pre {
+white-space: pre-wrap;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.average-rating {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 28px;
+}
+
+.rating-stars {
+    display: inline-block;
+    font-size: 28px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.rating-star {
+    display: inline-block;
+}
+
+.rating-star::before {
+    content: "\2605";
+}
+
+.rating-star.filled {
+    color: #ffc107;
+}
+
+h5 {
+    text-align: center;
+}
+
+.info {
+    text-align: center;
+}

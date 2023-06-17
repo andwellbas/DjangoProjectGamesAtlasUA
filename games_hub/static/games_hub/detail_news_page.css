@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#single {
+    max-width: 800px;
+    margin: 0 auto;
+    border: solid #1b1c1f;
+    padding: 20px;
+}
+
+div {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#news_h1 {
+font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    text-shadow: 0 0 10px #2efeff;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    margin-top: 2rem;
+    border: 2px solid #2efeff;
+    box-shadow: 0 0 10px rgba(255, 175, 75, 0.8);
+}
+
+pre {
+white-space: pre-wrap;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+@media only screen and (max-width: 768px) {
+img {
+    max-width: 80%;
+}
+}
+
+/* comment form */
+form {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+textarea {
+    color: White;
+    background-color: #1b1c1f;
+    width: 90%;
+    height: 8rem;
+    margin-top: 3rem;
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 2px solid #2efeff;
+}
+
+button[type="submit"] {
+    background-color: #0c6b6b;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    background-color: #2efeff;
+    box-shadow: 0px 0px 20px rgba(185, 113, 157, 0.5);
+    transform: scale(1.05);
+}
+
+
+/* comments */
+h2 {
+    margin-top: 3rem;
+    font-size: 2rem;
+}
+
+.col-sm-2 {
+    text-align: right;
+}
+
+.col-sm-2 small {
+    display: block;
+    margin-top: 0.3rem;
+}
+
+.col-sm-10 {
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.col-sm-10 p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+label[for=id_content] {
+    display: none;
+}
+
+.row {
+    padding: 10px;
+    margin: 5px;
+    border: solid;
+    border-color: #1b1c1f;
+    border-radius: 5px;
+}
+
+#login-link {
+    color: #fc0000;
+}
+
+#login-link:hover {
+    color: #2efeff;
+}
+
+.comments {
+    margin-top: 3rem;
+}

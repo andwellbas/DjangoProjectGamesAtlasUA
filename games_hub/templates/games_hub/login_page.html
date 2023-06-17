@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Вхід{% endblock %}
+{% block css_files %}<link rel="stylesheet" href="{% static 'games_hub/login_page.css' %}">{% endblock %}
+
+{% block content %}
+<div id="single">
+  <form method="post">
+    <h1>АВТОРИЗАЦІЯ</h1>
+    {% if messages %}
+    {% for message in messages %}
+      <br>
+      {{ message }}
+    {% endfor %}
+  {% endif %}
+    {% csrf_token %}
+    <div class="form-group">
+      <input type="text" name="username" class="form-control" placeholder="Ім'я користувача" required autofocus>
+    </div>
+    <div class="form-group">
+      <input type="password" name="password" class="form-control" placeholder="Пароль" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Увійти</button>
+  </form>
+</div>
+{% endblock %}
