@@ -281,3 +281,54 @@ nav .base-button {
         font-size: 1rem;
     }
 }
+
+
+
+#mobile-menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.mobile-menu-open {
+    display: block;
+}
+
+@media (max-width: 767px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  #logo {
+    margin: 0;
+    font-size: 1.8rem;
+    padding: 0.1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  #mobile-menu-toggle {
+    display: block;
+    margin-left: 1rem;
+  }
+
+  nav {
+    margin: 0.5rem 0;
+    display: none;
+  }
+
+  .mobile-menu-open nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  nav a {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+}

@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'base.css' %}">
+    <script src="{% static 'base.js' %}"></script>
     <link rel="icon" type="image/ico" href="{% static 'images/logo.ico' %}">
     {% block css_files %}{% endblock %}
     {% block scripts %}{% endblock %}
@@ -17,26 +18,27 @@
     <header id="main-navigation">
         <h1 id="logo">
             <a id="site-title" href="{% url 'starting-page' %}">GamesAtlasUA</a>
+            <div id="mobile-menu-toggle">&#9776;</div>
         </h1>
-    <nav>
+    <nav id="nav1">
         <a class="base-a" href="{% url 'top-games' %}">Топ найкращих ігор</a>
     </nav>
 
-    <nav>
+    <nav id="nav2">
         <a class="base-a" href="{% url 'future-releases' %}">Майбутні релізи</a>
     </nav>
 
-    <nav>
+    <nav id="nav3">
         <a class="base-a" href="{% url 'price-comparison-page' %}">Порівняти ціни</a>
     </nav>
 
     {% if user.is_authenticated %}
-        <nav>
+        <nav id="nav4">
             <a class="base-a" href="{% url 'profile' %}">Ваш Профіль</a>
             <a class="base-a" href="{% url 'logout' %}">Вихід</a>
         </nav>
     {% else %}
-        <nav>
+        <nav id="nav5">
             <a class="base-a" href="{% url 'signup' %}">Реєстрація</a>
             <a class="base-a" href="{% url 'login' %}">Вхід</a>
         </nav>
@@ -50,7 +52,7 @@
 <footer>
     <div class="footer-container">
         <div class="footer-item"><address><a href="mailto:gamesatlasua@gmail.com">gamesatlasua@gmail.com</a></address></div>
-        <div id="site-desc" class="footer-item">Ласкаво просимо до GamesAtlasUA - вашого найкращого джерела ігрової інформації! Наш сайт пропонує найсвіжіші ігрові новини, рейтинги найкращих ігор, де ви можете самостійно оцінити свої улюблені творіння, а також відстежувати список майбутніх ігрових релізів. Але це ще не все! Ми також надаємо можливість порівняти ціни на ігри в різних магазинах, щоб ви могли знайти найвигіднішу пропозицію. Знайдіть свій наступний улюблений тайтл за допомогою GamesAtlasUA - ваш надійний провідник у світі ігор!</div>
+        <div id="site-desc" class="footer-item">Ласкаво просимо до GamesAtlasUA - вашого найкращого джерела ігрової інформації! GamesAtlasUA - ваш надійний провідник у світі ігор!</div>
         <div class="footer-item"><a href="https://github.com/andwellbas/DjangoProjectGamesAtlasUA">GitHub</a></div>
     </div>
 </footer>

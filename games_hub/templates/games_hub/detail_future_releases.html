@@ -8,7 +8,7 @@
   <h1 id="game-name">{{ game.name }}</h1>
   <div id="single">
     <div class="game-information">
-      <img src="{{ game.image.url }}">
+      <img id="game-image" src="{{ game.image.url }}">
       <div class="game-info">
         {% if game.release_date %}
           <h4>Дата релізу: {{ game.release_date }}</h4>

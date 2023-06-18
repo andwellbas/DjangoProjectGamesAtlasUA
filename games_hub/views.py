@@ -111,7 +111,6 @@ def price_comparison_results(request):
     game_name = request.GET.get("game_name")
 
     steam = price_parser.get_steam_price(game_name)
-    gamers_gate = price_parser.get_gamers_gate_price(game_name)
     games_planet = price_parser.get_games_planet_price(game_name)
     yu_play = price_parser.get_games_yu_play_price(game_name)
     win_game = price_parser.get_win_game_store_price(game_name)
@@ -123,7 +122,6 @@ def price_comparison_results(request):
         "game_name": game_name,
         #  prices 0element in tuple
         "steam_price": steam[0],
-        "gamers_gate_price": gamers_gate[0],
         "games_planet_price": games_planet[0],
         "yu_play_price": yu_play[0],
         "win_game_price": win_game[0],
@@ -131,7 +129,6 @@ def price_comparison_results(request):
         "noctre_price": noctre[0],
         #  links 1element in tuple
         "steam_link": steam[1],
-        "gamers_gate_link": gamers_gate[1],
         "games_planet_link": games_planet[1],
         "yu_play_link": yu_play[1],
         "win_game_link": win_game[1],

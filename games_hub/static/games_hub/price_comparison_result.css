@@ -10,7 +10,6 @@ body {
     min-height: calc(100vh - 70px); /* 70px - height of footer */
 }
 
-
 #game-name {
     font-family: 'Orbitron', sans-serif;
     font-size: 3rem;
@@ -75,4 +74,35 @@ pre {
     line-height: 1.5;
     text-align: justify;
     word-wrap: break-word;
+}
+
+/* Mobile Styles */
+
+@media only screen and (max-width: 600px) {
+    #single {
+        padding: 10px;
+    }
+
+    #game-name {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin: 1rem;
+    }
+
+    li {
+        margin: 0.5rem;
+    }
+
+    img {
+        width: 80px;
+        height: 80px;
+    }
+
+    h3 {
+        font-size: 14px;
+        margin-top: 5px;
+    }
 }

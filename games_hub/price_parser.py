@@ -34,30 +34,6 @@ def get_steam_price(game_name: str):
         return "", ""
 
 
-def get_gamers_gate_price(game_name: str):
-    try:
-        url = f"https://www.gamersgate.com/games/?query={game_name.replace(' ', '+')}"
-        r = requests.get(url)
-        soup = BeautifulSoup(r.text, "lxml")
-        games = soup.find_all("div", class_="column catalog-item product--item")
-
-        try:
-            game_link = soup.find("a", class_="catalog-item--button-product-link")['href']
-        except TypeError:
-            game_link = ""
-
-        for game in games:
-            if game.get("data-name").lower() == game_name.lower():
-                game_price = f"{game.get('data-price')}$"
-                return game_price, game_link
-
-        return game_not_found, ""
-
-    except Exception as e:
-        # Error handling if the query fails or no data is available
-        return "", ""
-
-
 def get_games_planet_price(game_name: str):
     try:
         url = f"https://us.gamesplanet.com/search?query={game_name.replace(' ', '+')}"
