@@ -8,6 +8,8 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* List Styles */
+
 ul {
     list-style: none;
     display: flex;
@@ -27,7 +29,8 @@ li {
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
     position: relative;
-    border-radius: 2%
+    border-radius: 2%;
+    padding: 20px;
 }
 
 li:hover {
@@ -43,7 +46,7 @@ li img {
 }
 
 li div {
-    padding: 20px;
+    padding: 0px;
 }
 
 li h3 {
@@ -77,17 +80,39 @@ li p {
     line-height: 1.5em;
 }
 
+/* Responsive Styles */
+
 @media (max-width: 992px) {
-  li {
-    width: calc(50% - 20px);
-  }
+    li {
+        width: calc(50% - 20px);
+    }
+
+    ul {
+        margin: 0px auto;
+        padding: 0px;
+    }
+
+    li div {
+    padding: 20px;
+    }
 }
 
 @media (max-width: 768px) {
-  li {
-    width: 100%;
-  }
+    li {
+        width: 100%;
+    }
+
+    ul {
+        margin: 0px auto;
+        padding: 0px;
+    }
+
+    li div {
+    padding: 20px;
+    }
 }
+
+/* Pagination Styles */
 
 .pagination {
     display: flex;

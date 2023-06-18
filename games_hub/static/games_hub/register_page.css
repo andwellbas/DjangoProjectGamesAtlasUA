@@ -109,3 +109,53 @@ ul li {
 #captcha {
     margin-left: 20px;
 }
+
+/* Mobile Styles */
+
+@media only screen and (max-width: 600px) {
+    #single {
+        width: 100%;
+        min-height: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    #single h1 {
+        font-size: 2rem;
+        margin-top: 2rem;
+    }
+
+    form {
+        padding: 2rem;
+        margin-top: 0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 80%;
+    }
+
+    input[type="submit"] {
+        font-size: 1rem;
+        margin: 10px;
+        padding: 8px 16px;
+    }
+
+    .alert-danger {
+        font-size: 1rem;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    button[type="submit"] {
+        font-size: 1rem;
+        padding: 8px 16px;
+        margin-top: 10px;
+    }
+
+    #captcha {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

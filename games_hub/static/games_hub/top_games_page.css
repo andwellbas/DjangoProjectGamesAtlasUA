@@ -43,13 +43,21 @@ td {
 }
 
 @media screen and (max-width: 600px) {
-  th {
-    font-size: 18px;
-  }
+    th {
+        font-size: 18px;
+    }
 
-  td {
-    font-size: 14px;
-  }
+    td {
+        font-size: 14px;
+    }
+
+    #page-info {
+        font-size: 2rem;
+    }
+
+    #pre-description {
+        display: none;
+    }
 }
 
 .game-row:hover {
@@ -71,7 +79,7 @@ td {
 #pre-description {
     margin: 0 auto;
     max-width: 800px;
-    text-align:center;
+    text-align: center;
     font-size: 17px;
     text-shadow: 0 0 10px #2efeff;
     padding: 30px;

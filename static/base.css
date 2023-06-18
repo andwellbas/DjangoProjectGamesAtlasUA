@@ -37,7 +37,6 @@ header {
 }
 
 #logo {
-    margin-left: 1rem;
     font-size: 2.6rem;
     font-weight: bold;
     color: #2efeff;
@@ -45,7 +44,6 @@ header {
 }
 
 nav {
-    margin: 0 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,8 +157,6 @@ textarea {
     font-size: 1.2rem;
 }
 
-
-
 footer {
     background-color: #1b1c1f;
     color: #d7d7d7;
@@ -200,7 +196,6 @@ footer a:hover {
     color: #2efeff;
 }
 
-/* button */
 .base-button {
     display: inline-block;
     border-radius: 3px;
@@ -229,68 +224,60 @@ nav .base-button {
     max-width: 700px;
 }
 
-/* for mobile 767px */
+/* Mobile Styles */
 @media (max-width: 767px) {
-  header {
-    padding: 1rem;
-  }
+    #main-navigation nav a.base-a:not(:last-child) {
+                margin-right: 10px;
+    }
 
-  #logo {
-    margin-left: 0;
-    text-align: center;
-    font-size: 2rem;
-    padding: 1rem;
-  }
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
 
-  nav {
-    justify-content: center;
-    margin: 1rem 0;
-  }
+    #logo {
+        margin: 0;
+        font-size: 1.8rem;
+        padding: 0.1rem;
+    }
 
-  nav a {
-    margin-right: 1rem;
-  }
+    nav {
+        margin: 0.5rem 0;
+    }
 
-  footer {
-    padding: 1rem;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-item {
-    margin: 10px 0;
-  }
+    nav a {
+        margin-right: 0;
+        margin-bottom: 0.1rem;
+        font-size: 1rem;
+    }
 }
 
-/* for tablet 768px */
+/* Tablet Styles */
 @media (min-width: 768px) and (max-width: 991px) {
-  header {
-    padding: 1rem;
-  }
+    #main-navigation nav a.base-a:not(:last-child) {
+                margin-right: 10px;
+    }
 
-  #logo {
-    margin-left: 0;
-    text-align: center;
-    font-size: 2rem;
-    padding: 1rem;
-  }
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
 
-  nav {
-    justify-content: center;
-    margin: 1rem 0;
-  }
+    #logo {
+        margin: 0;
+        font-size: 1.8rem;
+        padding: 0.1rem;
+    }
 
-  nav a {
-    margin-right: 1rem;
-  }
+    nav {
+        margin: 0.5rem 0;
+    }
 
-  footer {
-    padding: 1rem;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-item {
-    margin: 10px 0;
-  }
+    nav a {
+        margin-right: 0;
+        margin-bottom: 0.1rem;
+        font-size: 1rem;
+    }
 }
