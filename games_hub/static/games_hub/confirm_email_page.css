@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#single h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    margin-top: 10rem;
+    text-shadow: 0 0 10px #2efeff;
+    text-align: center;
+}
+
+p {
+  font-size: 16px;
+
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Container styles */
+#single {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: calc(100vh - 70px); /* 70px - height of footer */
+  padding: 20px;
+}
+
+/* Error message styles */
+#error_message {
+    text-align: center;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+/* Form styles */
+form {
+  margin-top: 20px;
+}
+
+input[type="text"] {
+  width: 300px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2em;
+    border: 2px solid #2efeff;
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+button[type="submit"] {
+    background-color: #0c6b6b;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0px 0px 10px rgba(212, 159, 191, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    background-color: #2efeff;
+    box-shadow: 0px 0px 20px rgba(185, 113, 157, 0.5);
+    transform: scale(1.05);
+}
+
+#p-spam {
+    margin-top: 30px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  #single {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}

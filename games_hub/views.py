@@ -1,20 +1,28 @@
+import os
+import random
+
+from dotenv import load_dotenv, find_dotenv
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
 from django.http import HttpResponseRedirect, HttpResponseBadRequest
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
 from django.utils.decorators import method_decorator
-from .models import News, FutureReleases, TopGames
-from .forms import GameRatingForm, CommentForm
-from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.contrib import messages
-from django.db.models import Avg
-from .models import GameRating
-from django.db.models import F
-from .forms import SignUpForm
+from django.db.models import Avg, F
+from django.contrib.auth.models import User
 from django.views import View
+
+from .models import News, FutureReleases, TopGames, GameRating
+from .forms import GameRatingForm, CommentForm, SignUpForm
 from . import price_parser
+
+
+load_dotenv(find_dotenv())
 
 
 class MainPageView(View):
@@ -55,8 +63,8 @@ class DetailNewsView(DetailView):
         return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
 
-# Check whether the value has been set "g-recaptcha-response".
 def verify_recaptcha(response):
+    # check whether the value has been set "g-recaptcha-response".
     return bool(response)
 
 
@@ -72,9 +80,24 @@ def signup(request):
                         form.add_error("email", "Аккаунт з такою поштою вже зареєстрований.")
                     else:
                         user = form.save(commit=False)
+                        user.is_active = False  # deny user login until email confirmation
                         user.save()
-                        login(request, user)
-                        return redirect("starting-page")
+
+                        user_rand_code = str(random.randint(1000, 9999))
+                        # saving the verification code in the session
+                        request.session["confirmation_code"] = user_rand_code
+
+                        message = Mail(
+                            from_email=os.getenv("SENDGRID_EMAIL"),
+                            to_emails=email,
+                            subject='GamesAtlasUA код реєстрації',
+                            html_content=f'<strong>Ваш код: {user_rand_code}</strong>')
+
+                        sg = SendGridAPIClient(os.getenv("SENDGRID_API_KEY"))
+                        response = sg.send(message)
+
+                        return redirect("confirm_email", email=email)  # redirected to confirm_email_page
+
                 else:
                     form.add_error(None, "Неправильна перевірка reCAPTCHA.")
             else:
@@ -82,6 +105,24 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, "games_hub/register_page.html", {"form": form})
+
+
+def confirm_email(request, email):
+    if request.method == "POST":
+        code = request.POST.get("code")
+        # obtaining a verification code from the session
+        confirmation_code = request.session.get("confirmation_code", "")
+
+        if code == confirmation_code:  # verification code
+            user = User.objects.get(email=email)
+            user.is_active = True  # allow user login after email verification
+            user.save()
+            login(request, user)
+            return redirect("starting-page")
+        else:
+            messages.error(request, "Неправильний код підтвердження")
+            return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
+    return render(request, "games_hub/confirm_email_page.html", {"email": email})
 
 
 def login_view(request):

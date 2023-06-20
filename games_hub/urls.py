@@ -17,4 +17,5 @@ urlpatterns = [
     path("news/", views.MainPageView.as_view(), name="news-list"),
     path("profile/", views.profile_view, name="profile"),
     path("news/<slug:slug>", views.DetailNewsView.as_view(), name="detail-news-page"),
+    path("confirm/<str:email>", views.confirm_email, name="confirm_email"),
 ]

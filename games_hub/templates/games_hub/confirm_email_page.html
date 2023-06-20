@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Підтвердження реєстрації{% endblock %}
+{% block css_files %}<link rel="stylesheet" href="{% static 'games_hub/confirm_email_page.css' %}">{% endblock %}
+
+{% block content %}
+<div id="single">
+  <h1>Підтвердження реєстрації</h1>
+
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags == 'error' %}
+        <p id="error_message">{{ message }}</p>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  <p>Вам було надіслано електронне повідомлення з унікальним кодом.</p>
+  <p>Будь ласка, введіть цей код нижче для підтвердження вашої електронної адреси:</p>
+
+  <form action="/confirm/{{ email }}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="code" placeholder="Код підтвердження" required>
+    <button type="submit">Підтвердити</button>
+  </form>
+
+  <p id="p-spam">Якщо ви не знайшли це повідомлення, перевірте папку "Спам".</p>
+</div>
+{% endblock %}
