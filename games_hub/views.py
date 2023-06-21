@@ -83,7 +83,7 @@ def signup(request):
                         user.is_active = False  # deny user login until email confirmation
                         user.save()
 
-                        user_rand_code = str(random.randint(1000, 9999))
+                        user_rand_code = str(random.randint(100000, 999999))
                         # saving the verification code in the session
                         request.session["confirmation_code"] = user_rand_code
 
@@ -91,7 +91,10 @@ def signup(request):
                             from_email=os.getenv("SENDGRID_EMAIL"),
                             to_emails=email,
                             subject='GamesAtlasUA код реєстрації',
-                            html_content=f'<strong>Ваш код: {user_rand_code}</strong>')
+                            html_content=f"<h1>Ваш код: {user_rand_code}</h1>"
+                                         f"<p>Якщо ви не реєструвалися на "
+                                         f"<a href='http://gamesatlasua.eu-north-1.elasticbeanstalk.com/'>"
+                                         f"GamesAtlasUA</a>, то просто проігноруйте це повідомлення.</p>")
 
                         sg = SendGridAPIClient(os.getenv("SENDGRID_API_KEY"))
                         response = sg.send(message)
