@@ -46,7 +46,7 @@ Contributions to this project are welcome. If you have any bug reports, feature 
 
 ## Contact
 
-For any inquiries or issues, please contact us at gamesatlasua@gmail.com.
+For any inquiries or issues, please contact gamesatlasua@gmail.com.
 
 ## Deployment
 
@@ -57,3 +57,10 @@ This project is currently deployed on AWS Elastic Beanstalk. To deploy the proje
 2. Update the relevant settings in `settings.py` for the production environment.
 
 3. Deploy the project to the production server using your preferred deployment method.
+
+## Screenshots
+![Screenshot 1](screenshots/main_page.png)
+![Screenshot 1](screenshots/top_games.png)
+![Screenshot 1](screenshots/result_price.png)
+![Screenshot 1](screenshots/register.png)
+![Screenshot 1](screenshots/detail_top.png)
